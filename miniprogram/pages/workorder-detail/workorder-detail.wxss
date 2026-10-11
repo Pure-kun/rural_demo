@@ -1,0 +1,119 @@
+/* 状态横幅 —— 渐变底色 + 白色文字，作为页面视觉重心 */
+.status-banner {
+  border-radius: var(--r-lg);
+  padding: var(--sp-5) var(--sp-4);
+  margin-bottom: var(--sp-3);
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.status-banner.tag-pending {
+  background: linear-gradient(135deg, #F0A020 0%, #D9760A 100%);
+  box-shadow: 0 12rpx 32rpx rgba(232, 130, 12, 0.28);
+}
+.status-banner.tag-accepted,
+.status-banner.tag-processing {
+  background: linear-gradient(135deg, #4A8DF0 0%, #1D4ED8 100%);
+  box-shadow: 0 12rpx 32rpx rgba(37, 99, 235, 0.28);
+}
+.status-banner.tag-evaluate {
+  background: linear-gradient(135deg, #9B6BF0 0%, #6D28D9 100%);
+  box-shadow: 0 12rpx 32rpx rgba(124, 58, 237, 0.28);
+}
+.status-banner.tag-done {
+  background: var(--g-green);
+  box-shadow: 0 12rpx 32rpx rgba(31, 122, 69, 0.28);
+}
+.status-banner.tag-closed {
+  background: linear-gradient(135deg, #8A8F98 0%, #5F656E 100%);
+  box-shadow: 0 12rpx 32rpx rgba(95, 101, 110, 0.24);
+}
+
+/* 图标规范：32pt */
+.status-icon {
+  font-size: 64rpx;
+  line-height: 1;
+}
+
+/* 规范：大标题 18pt Bold */
+.status-text {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: var(--sp-2);
+}
+
+.status-sub {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  opacity: 0.88;
+  margin-top: 4rpx;
+}
+
+.detail-title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+.detail-tags {
+  display: flex;
+  margin-top: var(--sp-3);
+}
+
+.detail-tags .tag {
+  margin-right: var(--sp-2);
+}
+
+.detail-content {
+  font-size: var(--fs-base);
+  color: var(--c-text-sub);
+  line-height: 1.6;
+  margin-top: var(--sp-3);
+}
+
+.detail-photos {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--sp-3);
+}
+
+.detail-photo {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: var(--r-md);
+  margin-right: var(--sp-2);
+  margin-bottom: var(--sp-2);
+  background: #EEF0EE;
+}
+
+.kv {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sp-2) 0;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.kv-k { color: var(--c-text-weak); }
+.kv-v { color: var(--c-text); }
+
+.result-card {
+  border-left: 8rpx solid var(--c-primary);
+}
+
+.result-text {
+  font-size: var(--fs-base);
+  color: var(--c-text);
+  line-height: 1.6;
+}
+
+.speak-btn {
+  font-size: var(--fs-sm);
+  line-height: 1;
+  color: var(--c-primary);
+  background: var(--c-primary-light);
+  border-radius: var(--r-sm);
+  padding: 12rpx var(--sp-2);
+}

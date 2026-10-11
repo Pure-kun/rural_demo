@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "通知公告",
+  "navigationBarBackgroundColor": "#FADDB6",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

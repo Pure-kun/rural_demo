@@ -1,0 +1,124 @@
+.voice-card {
+  padding: var(--sp-5) var(--sp-4);
+  text-align: center;
+}
+
+.voice-wave {
+  margin-top: var(--sp-4);
+}
+
+.voice-demo-tip {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--c-accent);
+  background: var(--c-accent-light);
+  border-radius: var(--r-sm);
+  padding: var(--sp-2);
+}
+
+.manual-hint {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-text-weak);
+}
+
+/* AI 归类 */
+.ai-tags {
+  background: var(--c-primary-light);
+  border-radius: var(--r-md);
+  padding: var(--sp-3);
+}
+
+.ai-tags-empty {
+  background: #F3F6F3;
+}
+
+.ai-label {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-text-sub);
+}
+
+.ai-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--sp-2);
+}
+
+.ai-tag {
+  background: #FFFFFF;
+  border-radius: var(--r-sm);
+  padding: 8rpx var(--sp-2);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-primary);
+  font-weight: 600;
+  margin-right: var(--sp-2);
+  margin-bottom: 8rpx;
+}
+
+.ai-tag-urgency {
+  color: var(--c-accent);
+}
+
+/* 照片 */
+.photo-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-item {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+  margin-right: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.photo-img {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: var(--r-md);
+  background: #EEF0EE;
+}
+
+.photo-del {
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+  font-size: var(--fs-base);
+}
+
+.photo-add {
+  width: 180rpx;
+  height: 180rpx;
+  border: 2rpx dashed var(--c-border);
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FAFBFA;
+}
+
+/* 图标规范：24pt */
+.photo-add-icon {
+  font-size: 48rpx;
+  line-height: 1;
+}
+
+.photo-add-text {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-text-sub);
+  margin-top: 4rpx;
+}

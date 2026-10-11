@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我要反映问题",
+  "navigationBarBackgroundColor": "#CBE7D7",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

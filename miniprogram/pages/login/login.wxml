@@ -1,0 +1,71 @@
+<view class="app-root {{themeClass}}">
+
+  <view class="login-page">
+
+    <page-header
+      icon="🏡"
+      title="欢迎来到乡村便民服务"
+      subtitle="有事找村里，一句话就办"
+      theme="green"
+      customNav="{{true}}" />
+
+    <view class="login-body">
+
+      <!-- 表单 -->
+      <view class="login-form">
+
+        <view class="field">
+          <input
+            class="input"
+            value="{{username}}"
+            placeholder="请输入用户名"
+            placeholder-class="input-placeholder"
+            bindinput="onUsername" />
+        </view>
+
+        <view class="field input-wrap">
+          <input
+            class="input"
+            password="{{!showPwd}}"
+            value="{{password}}"
+            placeholder="请输入密码"
+            placeholder-class="input-placeholder"
+            bindinput="onPassword" />
+          <view class="input-eye" bindtap="togglePwd">{{showPwd ? '🙈' : '👁'}}</view>
+        </view>
+
+        <view class="login-row">
+          <view class="checkbox" bindtap="toggleRemember">
+            <view class="checkbox-box {{remember ? 'checkbox-box-on' : ''}}">{{remember ? '✓' : ''}}</view>
+            <text class="checkbox-text">记住我</text>
+          </view>
+          <text class="link" bindtap="onForgot">忘记密码？</text>
+        </view>
+
+        <button
+          class="btn btn-primary btn-block"
+          bindtap="onLogin"
+          disabled="{{loading}}">
+          <view class="spinner" wx:if="{{loading}}"></view>
+          <text>{{loading ? '正在登录…' : '登 录'}}</text>
+        </button>
+
+        <!-- 协议勾选（合规必需）
+             注意：text 组件会保留源码换行，这段必须写成一行，否则会渲染成多行 -->
+        <view class="checkbox login-agree" bindtap="toggleAgree">
+          <view class="checkbox-box {{agreed ? 'checkbox-box-on' : ''}}">{{agreed ? '✓' : ''}}</view>
+          <text class="checkbox-text">我已阅读并同意<text class="link" catchtap="openAgreement">《用户协议》</text>和<text class="link" catchtap="openPrivacy">《隐私授权》</text></text>
+        </view>
+
+      </view>
+
+      <view class="login-foot">
+        还没有账号？<text class="link" bindtap="onRegister">去注册</text>
+      </view>
+
+      <view class="login-demo">演示账号 wangwu　密码 123456</view>
+
+    </view>
+  </view>
+
+</view>

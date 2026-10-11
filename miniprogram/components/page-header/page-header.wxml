@@ -1,0 +1,14 @@
+<view class="ph ph-{{theme}} {{compact ? 'ph-compact' : ''}}">
+
+  <view class="ph-curve" style="height: {{curveHeight}}px;">
+    <view class="ph-card" wx:if="{{showCard}}">
+      <text class="ph-icon">{{icon}}</text>
+    </view>
+  </view>
+
+  <view class="ph-text">
+    <view class="ph-title" wx:if="{{title}}">{{title}}</view>
+    <view class="ph-sub" wx:if="{{subtitle}}">{{subtitle}}</view>
+  </view>
+
+</view>

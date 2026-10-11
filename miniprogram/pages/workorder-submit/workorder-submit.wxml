@@ -1,0 +1,129 @@
+<view class="app-root {{themeClass}}">
+
+  <page-header
+    icon="📝"
+    title="我要反映问题"
+    subtitle="按住说话，把事儿说清楚就行"
+    theme="green" />
+
+  <view class="page-body">
+
+    <!-- ============ 语音区 ============ -->
+    <view class="card voice-card">
+
+      <view
+        class="voice-btn {{recording ? 'voice-btn-recording' : ''}}"
+        bindtouchstart="onMicStart"
+        bindtouchend="onMicEnd"
+        bindtouchcancel="onMicCancel">
+        <text class="voice-btn-icon">{{recording ? '🔴' : '🎤'}}</text>
+        <text class="voice-btn-text">{{recording ? '松开发送' : '按住说话'}}</text>
+      </view>
+
+      <!-- 声波动画 -->
+      <view class="voice-wave" wx:if="{{recording}}">
+        <view class="voice-wave-bar" style="animation-delay: 0s"></view>
+        <view class="voice-wave-bar" style="animation-delay: 0.12s"></view>
+        <view class="voice-wave-bar" style="animation-delay: 0.24s"></view>
+        <view class="voice-wave-bar" style="animation-delay: 0.36s"></view>
+        <view class="voice-wave-bar" style="animation-delay: 0.48s"></view>
+      </view>
+
+      <!-- 实时识别结果 -->
+      <view class="voice-preview" wx:if="{{recognized}}">{{recognized}}</view>
+      <view class="voice-hint" wx:else>
+        {{recording ? '正在听您说……' : '按住按钮，说完松手'}}
+      </view>
+
+      <view class="voice-demo-tip" wx:if="{{!voiceAvailable}}">
+        演示模式：未配置语音插件，松手后会模拟识别结果
+      </view>
+
+      <!-- 打字兜底说明 -->
+      <view class="manual-hint">不方便说话？直接在下面打字也可以</view>
+    </view>
+
+    <!-- ============ 工单内容 ============ -->
+    <view class="card">
+      <view class="row-between mb-3">
+        <text class="section-title" style="margin-bottom:0">您要反映的问题</text>
+        <text class="fs-xs text-weak">可以直接改</text>
+      </view>
+
+      <view class="field">
+        <text class="field-label">一句话说清楚</text>
+        <input
+          class="input"
+          value="{{title}}"
+          placeholder="比如：村口路灯坏了"
+          placeholder-class="input-placeholder"
+          bindinput="onTitle" />
+      </view>
+
+      <view class="field">
+        <text class="field-label">详细说说<text class="req">*</text></text>
+        <textarea
+          class="textarea"
+          value="{{content}}"
+          placeholder="比如：村口那盏路灯坏了三天了，晚上走路看不见"
+          placeholder-class="input-placeholder"
+          maxlength="500"
+          bindinput="onContent" />
+      </view>
+
+      <!-- AI 自动归类结果 -->
+      <view class="ai-tags" wx:if="{{categoryText}}">
+        <view class="ai-label">🤖 AI 自动归类</view>
+        <view class="ai-tag-row">
+          <view class="ai-tag" bindtap="pickCategory">{{categoryText}} ›</view>
+          <view class="ai-tag ai-tag-urgency">紧急程度：{{urgencyText}}</view>
+        </view>
+      </view>
+      <view class="ai-tags ai-tags-empty" wx:else>
+        <view class="ai-label">🤖 说一句或写一句，AI 会自动帮您归类</view>
+      </view>
+    </view>
+
+    <!-- ============ 照片 ============ -->
+    <view class="card">
+      <view class="row-between mb-3">
+        <text class="section-title" style="margin-bottom:0">拍张照片给干部看</text>
+        <text class="fs-xs text-weak">可以不传</text>
+      </view>
+
+      <view class="photo-row">
+        <view
+          class="photo-item"
+          wx:for="{{images}}"
+          wx:key="*this">
+          <image
+            class="photo-img"
+            src="{{item}}"
+            mode="aspectFill"
+            data-index="{{index}}"
+            bindtap="previewImage" />
+          <view class="photo-del" data-index="{{index}}" catchtap="removeImage">×</view>
+        </view>
+
+        <view class="photo-add" wx:if="{{images.length < 3}}" bindtap="chooseImage">
+          <text class="photo-add-icon">📷</text>
+          <text class="photo-add-text">拍照</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="footer-holder"></view>
+  </view>
+
+  <!-- ============ 底部提交 ============ -->
+  <view class="footer-bar">
+    <button
+      class="btn btn-primary btn-block"
+      bindtap="submit"
+      disabled="{{submitting}}">
+      <view class="spinner" wx:if="{{submitting}}"></view>
+      <text>{{submitting ? '正在提交…' : '提交给村委会'}}</text>
+    </button>
+  </view>
+
+</view>

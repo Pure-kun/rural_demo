@@ -1,0 +1,60 @@
+<view class="app-root {{themeClass}} chat-page">
+
+  <page-header
+    icon="🤖"
+    title="问 AI"
+    subtitle="政策不懂，问一句就明白"
+    theme="purple"
+    compact="{{true}}" />
+
+  <scroll-view
+    class="chat-scroll"
+    scroll-y
+    scroll-into-view="{{scrollInto}}"
+    scroll-with-animation>
+
+    <view class="chat-inner">
+
+      <block wx:for="{{messages}}" wx:key="index">
+        <view id="msg-{{index}}" class="bubble-row {{item.role === 'user' ? 'bubble-row-user' : ''}}">
+          <view class="bubble {{item.role === 'user' ? 'bubble-user' : 'bubble-ai'}}">
+            <text wx:if="{{!item.pending}}">{{item.content}}</text>
+            <text wx:else class="text-weak">正在想…</text>
+          </view>
+        </view>
+
+        <!-- AI 回答可以听（text 内容必须写在一行，否则换行会被渲染出来） -->
+        <view class="bubble-tools" wx:if="{{item.role === 'assistant' && !item.pending && index > 0}}">
+          <text class="bubble-tool" data-index="{{index}}" bindtap="speakMessage">{{speakingIndex === index ? '⏹ 停止朗读' : '🔊 念给我听'}}</text>
+        </view>
+      </block>
+
+      <view class="chat-note">
+        AI 回答仅供参考，具体政策请以村委会解释为准
+      </view>
+
+      <view class="chat-holder"></view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入 -->
+  <view class="chat-bar">
+    <view
+      class="chat-mic {{recording ? 'chat-mic-recording' : ''}}"
+      bindtouchstart="onMicStart"
+      bindtouchend="onMicEnd"
+      bindtouchcancel="onMicEnd">🎤</view>
+
+    <input
+      class="chat-input"
+      value="{{input}}"
+      placeholder="说点什么，或者按左边说话"
+      placeholder-class="input-placeholder"
+      confirm-type="send"
+      bindinput="onInput"
+      bindconfirm="send" />
+
+    <view class="chat-send {{sending ? 'chat-send-disabled' : ''}}" bindtap="send">发送</view>
+  </view>
+
+</view>

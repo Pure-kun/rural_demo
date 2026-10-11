@@ -1,0 +1,34 @@
+<view class="app-root {{themeClass}}">
+  <view class="page-body" wx:if="{{notice}}">
+
+    <view class="card">
+      <view class="notice-title">{{notice.title}}</view>
+      <view class="notice-meta">
+        <text>{{notice.publisherName}}</text>
+        <text>{{notice.timeText}}</text>
+      </view>
+      <view class="divider"></view>
+      <view class="notice-content">{{notice.content}}</view>
+    </view>
+
+    <!-- 念给我听 -->
+    <view class="speak-big {{speaking ? 'speak-big-active' : ''}}" bindtap="speak">
+      <text class="speak-big-icon">{{speaking ? '⏹' : '🔊'}}</text>
+      <text class="speak-big-text">{{speaking ? '正在念，点一下停' : '念给我听'}}</text>
+    </view>
+
+    <view class="notice-foot">
+      <button class="btn btn-secondary btn-block" bindtap="callVillage">📞 有不懂的，打电话问村里</button>
+    </view>
+
+  </view>
+
+  <view class="page-body" wx:else>
+    <view class="skeleton-card">
+      <view class="sk-line sk-line-60"></view>
+      <view class="sk-line sk-line-90"></view>
+      <view class="sk-line sk-line-90"></view>
+      <view class="sk-line sk-line-40"></view>
+    </view>
+  </view>
+</view>

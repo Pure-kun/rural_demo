@@ -1,0 +1,64 @@
+<view class="app-root {{themeClass}}">
+
+  <page-header
+    icon="👤"
+    title="{{user.realName || '未登录'}}"
+    subtitle="{{roleText}}　乡村便民服务"
+    theme="blue" />
+
+  <view class="page-body">
+
+    <!-- 字号设置（适老化核心） -->
+    <view class="card">
+      <view class="row-between mb-3">
+        <text class="section-title" style="margin-bottom:0">字体大小</text>
+        <text class="fs-xs text-weak">看不清就调大一点</text>
+      </view>
+
+      <view class="size-picker">
+        <view
+          wx:for="{{levels}}"
+          wx:key="key"
+          class="size-opt size-opt-{{index + 1}} {{level === item.key ? 'size-opt-active' : ''}}"
+          data-level="{{item.key}}"
+          bindtap="changeLevel">{{item.label}}</view>
+      </view>
+
+      <view class="size-demo mt-4">
+        这是一段示例文字，您可以看看这个大小合不合适。
+      </view>
+    </view>
+
+    <!-- 待提交 -->
+    <view class="card" wx:if="{{queueCount > 0}}" bindtap="flushQueue">
+      <view class="row-between">
+        <view>
+          <view class="setting-label">待提交内容</view>
+          <view class="fs-sm text-weak mt-1">有 {{queueCount}} 条还没发出去</view>
+        </view>
+        <view class="tag tag-pending"><text>点这里重发</text></view>
+      </view>
+    </view>
+
+    <!-- 设置项 -->
+    <view class="card">
+      <view class="setting-row" bindtap="onCall">
+        <text class="setting-label">📞 打电话给村干部</text>
+        <text class="setting-value">›</text>
+      </view>
+
+      <view class="setting-row" bindtap="about">
+        <text class="setting-label">ℹ️ 关于本小程序</text>
+        <text class="setting-value">预览版 ›</text>
+      </view>
+
+      <view class="setting-row" bindtap="logout">
+        <text class="setting-label text-danger">退出登录</text>
+        <text class="setting-value">›</text>
+      </view>
+    </view>
+
+    <view class="profile-foot">乡村便民服务 · 设计预览版</view>
+
+  </view>
+</view>

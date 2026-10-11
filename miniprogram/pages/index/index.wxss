@@ -1,0 +1,31 @@
+/* 工单概况渐变卡 —— 页面视觉重心 */
+.stat-gradient {
+  background: var(--g-green);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4) var(--sp-3) var(--sp-2);
+  margin-bottom: var(--sp-3);
+  box-shadow: 0 12rpx 32rpx rgba(31, 122, 69, 0.26);
+}
+
+.stat-gradient .stat-num {
+  color: #FFFFFF;
+}
+
+.stat-gradient .stat-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.stat-line {
+  height: 2rpx;
+  background: rgba(255, 255, 255, 0.22);
+  margin: var(--sp-2) 0 0;
+}
+
+.stat-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-1);
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.92);
+}

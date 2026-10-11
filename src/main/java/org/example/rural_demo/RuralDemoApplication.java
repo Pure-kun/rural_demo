@@ -3,10 +3,11 @@ package org.example.rural_demo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-// 扫描mapper包，路径对应你的mapper文件夹
 @MapperScan("org.example.rural_demo.mapper")
+@EnableScheduling
 public class RuralDemoApplication {
 
     public static void main(String[] args) {

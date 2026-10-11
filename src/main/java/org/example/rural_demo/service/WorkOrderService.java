@@ -2,22 +2,36 @@ package org.example.rural_demo.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.example.rural_demo.dto.WorkOrderHandleDTO;
-import org.example.rural_demo.dto.WorkOrderSubmitDTO;
+import org.example.rural_demo.dto.*;
 import org.example.rural_demo.entity.WorkOrder;
+import org.example.rural_demo.entity.WorkOrderLog;
+import org.example.rural_demo.vo.WorkOrderStatsVO;
 
-/**
- * 工单Service接口
- * 继承IService，自带基础的增删改查
- */
+import java.util.List;
+
 public interface WorkOrderService extends IService<WorkOrder> {
 
-    //村民提交工单
     void submitWorkOrder(Long userId, WorkOrderSubmitDTO dto);
 
-    //村干部处理工单
-    void handleWorkOrder(Long handleUserId, WorkOrderHandleDTO dto);
+    void acceptWorkOrder(Long handleUserId, String handleUserName, WorkOrderAcceptDTO dto);
 
-    //分页查询工单列表（村民只能看自己的，村干部看所有）
-    Page<WorkOrder> getWorkOrderPage(Long userId, Integer role, Integer pageNum, Integer pageSize);
+    void updateProgress(Long handleUserId, String handleUserName, WorkOrderProgressDTO dto);
+
+    void handleWorkOrder(Long handleUserId, String handleUserName, WorkOrderHandleDTO dto);
+
+    void rateWorkOrder(Long userId, WorkOrderRateDTO dto);
+
+    void rejectWorkOrder(Long handleUserId, String handleUserName, WorkOrderRejectDTO dto);
+
+    void closeWorkOrder(Long userId, WorkOrderRejectDTO dto);
+
+    void urgeWorkOrder(Long userId, Long workOrderId);
+
+    Page<WorkOrder> getWorkOrderPage(Long userId, Integer role, Integer pageNum, Integer pageSize, Integer status, String keyword);
+
+    List<WorkOrderLog> getWorkOrderLogs(Long workOrderId);
+
+    WorkOrderStatsVO getStats(String startDate, String endDate);
+
+    void checkTimeoutAndAutoComplete();
 }

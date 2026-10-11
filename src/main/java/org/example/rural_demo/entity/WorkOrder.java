@@ -6,110 +6,101 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.LocalDateTime;
 
-/**
- * 工单实体类
- * 关联work_order表
- * 民生工单信息
- */
 @TableName("work_order")
 public class WorkOrder {
-    //主键 自增
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    //提交工单的用户ID
     private Long userId;
 
-    //工单标题
     private String title;
 
-    //工单内容
     private String content;
 
-    //工单状态 0-待处理 1-处理中 2-已完成
     private Integer status;
 
-    //处理人ID
     private Long handleUserId;
 
-    //处理结果
     private String result;
 
-    //创建时间
+    private Integer rating;
+
+    private String ratingContent;
+
+    private LocalDateTime ratingTime;
+
+    private String rejectReason;
+
+    private LocalDateTime rejectTime;
+
+    private LocalDateTime finishTime;
+
+    private LocalDateTime acceptTime;
+
+    private Integer urgeCount;
+
+    private LocalDateTime lastUrgeTime;
+
+    private LocalDateTime deadline;
+
     private LocalDateTime createTime;
 
-    //更新时间
     private LocalDateTime updateTime;
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 
-    public Long getUserId() {
-        return userId;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
 
-    public String getTitle() {
-        return title;
-    }
+    public Integer getStatus() { return status; }
+    public void setStatus(Integer status) { this.status = status; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public Long getHandleUserId() { return handleUserId; }
+    public void setHandleUserId(Long handleUserId) { this.handleUserId = handleUserId; }
 
-    public String getContent() {
-        return content;
-    }
+    public String getResult() { return result; }
+    public void setResult(String result) { this.result = result; }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
 
-    public Integer getStatus() {
-        return status;
-    }
+    public String getRatingContent() { return ratingContent; }
+    public void setRatingContent(String ratingContent) { this.ratingContent = ratingContent; }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+    public LocalDateTime getRatingTime() { return ratingTime; }
+    public void setRatingTime(LocalDateTime ratingTime) { this.ratingTime = ratingTime; }
 
-    public Long getHandleUserId() {
-        return handleUserId;
-    }
+    public String getRejectReason() { return rejectReason; }
+    public void setRejectReason(String rejectReason) { this.rejectReason = rejectReason; }
 
-    public void setHandleUserId(Long handleUserId) {
-        this.handleUserId = handleUserId;
-    }
+    public LocalDateTime getRejectTime() { return rejectTime; }
+    public void setRejectTime(LocalDateTime rejectTime) { this.rejectTime = rejectTime; }
 
-    public String getResult() {
-        return result;
-    }
+    public LocalDateTime getFinishTime() { return finishTime; }
+    public void setFinishTime(LocalDateTime finishTime) { this.finishTime = finishTime; }
 
-    public void setResult(String result) {
-        this.result = result;
-    }
+    public LocalDateTime getAcceptTime() { return acceptTime; }
+    public void setAcceptTime(LocalDateTime acceptTime) { this.acceptTime = acceptTime; }
 
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
+    public Integer getUrgeCount() { return urgeCount; }
+    public void setUrgeCount(Integer urgeCount) { this.urgeCount = urgeCount; }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
+    public LocalDateTime getLastUrgeTime() { return lastUrgeTime; }
+    public void setLastUrgeTime(LocalDateTime lastUrgeTime) { this.lastUrgeTime = lastUrgeTime; }
 
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
+    public LocalDateTime getDeadline() { return deadline; }
+    public void setDeadline(LocalDateTime deadline) { this.deadline = deadline; }
 
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
+    public LocalDateTime getCreateTime() { return createTime; }
+    public void setCreateTime(LocalDateTime createTime) { this.createTime = createTime; }
+
+    public LocalDateTime getUpdateTime() { return updateTime; }
+    public void setUpdateTime(LocalDateTime updateTime) { this.updateTime = updateTime; }
 }

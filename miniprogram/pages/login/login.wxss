@@ -1,0 +1,53 @@
+.login-page {
+  min-height: 100vh;
+  background: var(--c-card);
+}
+
+.login-body {
+  padding: 0 var(--sp-page) var(--sp-6);
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-eye {
+  position: absolute;
+  right: var(--sp-3);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40rpx;
+  line-height: 1;
+}
+
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--sp-1) 0 var(--sp-4);
+}
+
+.login-agree {
+  align-items: center;
+  margin-top: var(--sp-4);
+}
+
+.login-agree .checkbox-text {
+  flex: 1;
+}
+
+.login-foot {
+  text-align: center;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-text-sub);
+  margin-top: var(--sp-6);
+}
+
+.login-demo {
+  text-align: center;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--c-text-weak);
+  margin-top: var(--sp-6);
+}

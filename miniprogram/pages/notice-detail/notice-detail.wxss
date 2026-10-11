@@ -1,0 +1,58 @@
+/* 规范：大标题 18pt Bold */
+.notice-title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+.notice-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-text-weak);
+  margin-top: var(--sp-3);
+}
+
+/* 公告正文：长文阅读，按适老化在规范正文 14pt 基础上提到一级标题 16pt */
+.notice-content {
+  font-size: var(--fs-lg);
+  color: var(--c-text);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.speak-big {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-h);
+  min-height: var(--hit-min);
+  background: linear-gradient(135deg, #FDF1E0 0%, #F8D9B2 100%);
+  color: #B46100;
+  border-radius: var(--r-lg);
+  margin-bottom: var(--sp-4);
+  box-shadow: 0 8rpx 24rpx rgba(232, 130, 12, 0.16);
+}
+
+.speak-big-active {
+  background: var(--g-orange);
+  color: #FFFFFF;
+  box-shadow: 0 12rpx 32rpx rgba(232, 130, 12, 0.30);
+}
+
+.speak-big-icon {
+  font-size: 48rpx;
+  line-height: 1;
+  margin-right: var(--sp-2);
+}
+
+.speak-big-text {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+}
+
+.notice-foot {
+  margin-top: var(--sp-4);
+}

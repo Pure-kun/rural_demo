@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "问 AI",
+  "navigationBarBackgroundColor": "#DED0F9",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

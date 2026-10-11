@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "乡村便民服务",
+  "navigationBarBackgroundColor": "#CBE7D7",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

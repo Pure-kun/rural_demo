@@ -1,0 +1,50 @@
+<view class="app-root {{themeClass}}">
+
+  <page-header
+    icon="📢"
+    title="通知公告"
+    subtitle="村里的最新消息"
+    theme="orange" />
+
+  <view class="page-body">
+
+    <block wx:if="{{loading}}">
+      <view class="skeleton-card" wx:for="{{[1,2,3]}}" wx:key="*this">
+        <view class="sk-line sk-line-60"></view>
+        <view class="sk-line sk-line-90"></view>
+        <view class="sk-line sk-line-40"></view>
+      </view>
+    </block>
+
+    <view class="empty" wx:elif="{{list.length === 0}}">
+      <view class="empty-icon">📭</view>
+      <view class="empty-text">暂时还没有通知</view>
+    </view>
+
+    <block wx:else>
+      <view
+        wx:for="{{list}}"
+        wx:key="id"
+        class="list-item"
+        data-id="{{item.id}}"
+        bindtap="goDetail">
+
+        <view class="list-item-head">
+          <view class="flex-1">
+            <view class="tag tag-pending mb-2" wx:if="{{item.isTop === 1}}">置顶</view>
+            <text class="list-item-title">{{item.title}}</text>
+          </view>
+          <text class="badge-dot" wx:if="{{item.isRead === 0}}">新</text>
+        </view>
+
+        <view class="list-item-desc">{{item.content}}</view>
+
+        <view class="list-item-foot">
+          <text>{{item.publisherName}}</text>
+          <text>{{item.timeText}}</text>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>

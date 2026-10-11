@@ -1,0 +1,82 @@
+.ph {
+  width: 100%;
+}
+
+/* 曲线背景 —— 平缓椭圆底边 */
+.ph-curve {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom-left-radius: 50% 64rpx;
+  border-bottom-right-radius: 50% 64rpx;
+}
+
+/* 四套主题渐变 */
+.ph-green .ph-curve { background: var(--g-curve-green); }
+.ph-orange .ph-curve { background: var(--g-curve-orange); }
+.ph-purple .ph-curve { background: var(--g-curve-purple); }
+.ph-blue .ph-curve { background: var(--g-curve-blue); }
+
+/* 居中悬浮图标卡片 */
+.ph-card {
+  width: 144rpx;
+  height: 144rpx;
+  margin-bottom: -72rpx;
+  background: var(--c-card);
+  border-radius: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 阴影跟随主题色，层次更自然 */
+.ph-green .ph-card { box-shadow: 0 16rpx 40rpx rgba(31, 122, 69, 0.20), 0 4rpx 12rpx rgba(0, 0, 0, 0.04); }
+.ph-orange .ph-card { box-shadow: 0 16rpx 40rpx rgba(232, 130, 12, 0.22), 0 4rpx 12rpx rgba(0, 0, 0, 0.04); }
+.ph-purple .ph-card { box-shadow: 0 16rpx 40rpx rgba(124, 58, 237, 0.22), 0 4rpx 12rpx rgba(0, 0, 0, 0.04); }
+.ph-blue .ph-card { box-shadow: 0 16rpx 40rpx rgba(37, 99, 235, 0.22), 0 4rpx 12rpx rgba(0, 0, 0, 0.04); }
+
+.ph-icon {
+  font-size: 72rpx;
+  line-height: 1;
+}
+
+/* 标题区 */
+.ph-text {
+  padding: 92rpx var(--sp-page) var(--sp-2);
+  text-align: center;
+}
+
+.ph-title {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+
+.ph-sub {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--c-text-sub);
+  margin-top: 4rpx;
+}
+
+/* 紧凑模式 */
+.ph-compact .ph-card {
+  width: 112rpx;
+  height: 112rpx;
+  margin-bottom: -56rpx;
+  border-radius: 28rpx;
+}
+
+.ph-compact .ph-icon {
+  font-size: 56rpx;
+}
+
+.ph-compact .ph-text {
+  padding: 72rpx var(--sp-page) 0;
+}
+
+.ph-compact .ph-title {
+  font-size: var(--fs-xl);
+}

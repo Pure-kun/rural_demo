@@ -1,0 +1,17 @@
+.size-demo {
+  font-size: var(--fs-base);
+  color: var(--c-text-sub);
+  background: linear-gradient(135deg, #F7FAF8 0%, #EEF5F0 100%);
+  border-radius: var(--r-sm);
+  padding: var(--sp-3);
+  line-height: 1.5;
+}
+
+.profile-foot {
+  text-align: center;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--c-text-weak);
+  margin-top: var(--sp-5);
+  padding-bottom: var(--sp-4);
+}

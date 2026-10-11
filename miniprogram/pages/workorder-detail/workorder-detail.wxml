@@ -1,0 +1,95 @@
+<view class="app-root {{themeClass}}">
+  <view class="page-body" wx:if="{{order}}">
+
+    <!-- 状态横幅 -->
+    <view class="status-banner {{order.statusTag}}">
+      <view class="status-icon">{{order.statusIcon}}</view>
+      <view class="status-text">{{order.statusText}}</view>
+      <view class="status-sub" wx:if="{{order.urgeCount > 0}}">您已催办 {{order.urgeCount}} 次</view>
+    </view>
+
+    <!-- 工单内容 -->
+    <view class="card">
+      <view class="detail-title">{{order.title}}</view>
+
+      <view class="detail-tags">
+        <view class="tag tag-closed">{{order.categoryText}}</view>
+        <view class="tag tag-pending" wx:if="{{order.urgency > 1}}">{{order.urgencyText}}</view>
+      </view>
+
+      <view class="detail-content">{{order.content}}</view>
+
+      <view class="detail-photos" wx:if="{{order.images.length > 0}}">
+        <image
+          wx:for="{{order.images}}"
+          wx:key="*this"
+          class="detail-photo"
+          src="{{item}}"
+          mode="aspectFill"
+          data-index="{{index}}"
+          bindtap="previewImage" />
+      </view>
+
+      <view class="divider"></view>
+
+      <view class="kv"><text class="kv-k">提交时间</text><text class="kv-v">{{order.createText}}</text></view>
+      <view class="kv" wx:if="{{order.handlerName}}"><text class="kv-k">处理人</text><text class="kv-v">{{order.handlerName}}</text></view>
+      <view class="kv"><text class="kv-k">提交人</text><text class="kv-v">{{order.submitterName}}</text></view>
+    </view>
+
+    <!-- 处理结果 -->
+    <view class="card result-card" wx:if="{{order.result}}">
+      <view class="row-between mb-2">
+        <text class="section-title" style="margin-bottom:0">处理结果</text>
+        <view class="speak-btn" bindtap="speakResult">
+          {{speaking ? '⏹ 停止' : '🔊 念给我听'}}
+        </view>
+      </view>
+      <view class="result-text">{{order.result}}</view>
+    </view>
+
+    <!-- 我的评价 -->
+    <view class="card" wx:if="{{order.evaluateScore}}">
+      <text class="section-title">我的评价</text>
+      <view class="result-text">{{order.evaluateComment}}</view>
+    </view>
+
+    <!-- 流转时间轴 -->
+    <view class="card" wx:if="{{logs.length > 0}}">
+      <text class="section-title">办理过程</text>
+      <view class="timeline">
+        <view class="tl-item" wx:for="{{logs}}" wx:key="createTime">
+          <view class="tl-dot {{index === 0 ? 'tl-dot-active' : ''}}"></view>
+          <view class="tl-action">{{item.actionText}}</view>
+          <view class="tl-remark" wx:if="{{item.remark}}">{{item.remark}}</view>
+          <view class="tl-time">{{item.operatorName}} · {{item.timeText}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="footer-holder" wx:if="{{canUrge || canEvaluate}}"></view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="page-body" wx:elif="{{loading}}">
+    <view class="skeleton-card">
+      <view class="sk-line sk-line-60"></view>
+      <view class="sk-line sk-line-90"></view>
+      <view class="sk-line sk-line-40"></view>
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="footer-bar" wx:if="{{canUrge}}">
+    <button class="btn btn-secondary" style="flex:0 0 38%; margin-right: 24rpx;" bindtap="callHandler">📞 打电话</button>
+    <button class="btn btn-primary flex-1" bindtap="urge" disabled="{{urging}}">
+      <view class="spinner" wx:if="{{urging}}"></view>
+      <text>{{urging ? '正在提醒…' : '催一催村干部'}}</text>
+    </button>
+  </view>
+
+  <view class="footer-bar" wx:elif="{{canEvaluate}}">
+    <button class="btn btn-primary btn-block" bindtap="evaluate">给这次办理打个分</button>
+  </view>
+
+</view>

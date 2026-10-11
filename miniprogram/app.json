@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/workorder-submit/workorder-submit",
+    "pages/workorder-list/workorder-list",
+    "pages/workorder-detail/workorder-detail",
+    "pages/notice-list/notice-list",
+    "pages/notice-detail/notice-detail",
+    "pages/ai-chat/ai-chat",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1F7A45",
+    "navigationBarTitleText": "乡村便民服务",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F3F6F3",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8A8A8A",
+    "selectedColor": "#1F7A45",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/workorder-list/workorder-list",
+        "text": "我的工单"
+      },
+      {
+        "pagePath": "pages/notice-list/notice-list",
+        "text": "通知"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

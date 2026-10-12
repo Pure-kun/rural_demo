@@ -1,0 +1,55 @@
+<view class="app-root {{themeClass}}">
+  <page-header
+    icon="📋"
+    title="工单处理"
+    subtitle="村民反映的问题都在这里"
+    theme="blue" />
+
+  <view class="page-body">
+    <view class="tabs">
+      <view
+        wx:for="{{tabs}}"
+        wx:key="key"
+        class="tab {{activeTab === item.key ? 'tab-active' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="switchTab">{{item.label}}</view>
+    </view>
+
+    <block wx:if="{{loading}}">
+      <view class="skeleton-card" wx:for="{{[1,2,3]}}" wx:key="*this">
+        <view class="sk-line sk-line-60"></view>
+        <view class="sk-line sk-line-90"></view>
+        <view class="sk-line sk-line-40"></view>
+      </view>
+    </block>
+
+    <view class="empty" wx:elif="{{list.length === 0}}">
+      <view class="empty-icon">📋</view>
+      <view class="empty-text">当前没有工单</view>
+    </view>
+
+    <block wx:else>
+      <view
+        wx:for="{{list}}"
+        wx:key="id"
+        class="list-item"
+        data-id="{{item.id}}"
+        bindtap="goDetail">
+        <view class="list-item-head">
+          <text class="list-item-title">{{item.title}}</text>
+          <view class="tag {{item.statusTag}}">{{item.statusIcon}} {{item.statusText}}</view>
+        </view>
+        <view class="list-item-desc">{{item.content}}</view>
+        <view class="list-item-foot">
+          <text>{{item.submitterName || '村民'}}</text>
+          <text>{{item.categoryText}} · {{item.timeText}}</text>
+        </view>
+        <view class="cadre-order-extra">
+          <text wx:if="{{item.urgency > 1}}" class="text-danger">紧急程度：{{item.urgencyText}}</text>
+          <text wx:elif="{{item.handlerName}}">处理人：{{item.handlerName}}</text>
+          <text wx:else class="text-weak">点击查看并处理 ›</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

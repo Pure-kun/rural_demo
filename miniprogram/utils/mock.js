@@ -54,6 +54,40 @@ const NOTICES = [
   },
 ]
 
+// ---------------- 农产品 ----------------
+const PRODUCTS = [
+  {
+    id: 1,
+    name: '生态大米',
+    price: 68.00,
+    stock: 120,
+    description: '本村生态种植大米，颗粒饱满，口感香糯。',
+    imgUrl: '',
+    createTime: ts(4 * DAY),
+    updateTime: ts(4 * DAY),
+  },
+  {
+    id: 2,
+    name: '应季土鸡蛋',
+    price: 22.00,
+    stock: 80,
+    description: '散养土鸡蛋，新鲜现收，适合日常食用。',
+    imgUrl: '',
+    createTime: ts(2 * DAY),
+    updateTime: ts(2 * DAY),
+  },
+  {
+    id: 3,
+    name: '农家蜂蜜',
+    price: 45.00,
+    stock: 35,
+    description: '山地百花蜜，农家采收，味道清甜。',
+    imgUrl: '',
+    createTime: ts(1 * DAY),
+    updateTime: ts(1 * DAY),
+  },
+]
+
 // ---------------- 工单 ----------------
 const WORK_ORDERS = [
   {
@@ -218,11 +252,90 @@ function mockRequest(url, method, data) {
     return delay(pageOf(NOTICES, d.pageNum, d.pageSize))
   }
 
+  // 新增通知
+  if (url === '/notice' && method === 'POST') {
+    const notice = Object.assign({}, d, {
+      id: NOTICES.reduce((maxId, item) => Math.max(maxId, item.id), 0) + 1,
+      createTime: ts(0),
+      isTop: 0,
+      isRead: 0,
+      publisherName: '村委会',
+    })
+    NOTICES.unshift(notice)
+    return delay(true)
+  }
+
+  // 修改通知
+  if (url === '/notice' && method === 'PUT') {
+    const index = NOTICES.findIndex((item) => item.id === Number(d.id))
+    if (index < 0) return Promise.reject({ type: 'BIZ', code: 400, msg: '通知不存在' })
+    NOTICES[index] = Object.assign({}, NOTICES[index], d)
+    return delay(true)
+  }
+
+  // 删除通知
+  if (method === 'DELETE' && url.indexOf('/notice/') === 0) {
+    const id = Number(url.split('/').pop())
+    const index = NOTICES.findIndex((item) => item.id === id)
+    if (index < 0) return Promise.reject({ type: 'BIZ', code: 400, msg: '通知不存在' })
+    NOTICES.splice(index, 1)
+    return delay(true)
+  }
+
   // 通知详情
-  if (url.indexOf('/notice/') === 0 && url !== '/notice/page') {
+  if (method === 'GET' && url.indexOf('/notice/') === 0 && url !== '/notice/page') {
     const id = Number(url.split('/').pop())
     const n = NOTICES.filter((x) => x.id === id)[0]
     return n ? delay(n) : Promise.reject({ type: 'BIZ', code: 400, msg: '通知不存在' })
+  }
+
+  // 农产品列表
+  if (url === '/product/list') {
+    return delay(PRODUCTS)
+  }
+
+  // 农产品分页列表
+  if (url === '/product/page') {
+    let list = PRODUCTS
+    if (d.name) {
+      list = list.filter((x) => x.name.indexOf(d.name) >= 0)
+    }
+    return delay(pageOf(list, d.pageNum, d.pageSize))
+  }
+
+  // 新增农产品
+  if (url === '/product' && method === 'POST') {
+    const product = Object.assign({}, d, {
+      id: PRODUCTS.reduce((maxId, item) => Math.max(maxId, item.id), 0) + 1,
+      createTime: ts(0),
+      updateTime: ts(0),
+    })
+    PRODUCTS.unshift(product)
+    return delay(true)
+  }
+
+  // 修改农产品
+  if (url === '/product' && method === 'PUT') {
+    const index = PRODUCTS.findIndex((item) => item.id === Number(d.id))
+    if (index < 0) return Promise.reject({ type: 'BIZ', code: 400, msg: '农产品不存在' })
+    PRODUCTS[index] = Object.assign({}, PRODUCTS[index], d, { updateTime: ts(0) })
+    return delay(true)
+  }
+
+  // 下架农产品
+  if (method === 'DELETE' && url.indexOf('/product/') === 0) {
+    const id = Number(url.split('/').pop())
+    const index = PRODUCTS.findIndex((x) => x.id === id)
+    if (index < 0) return Promise.reject({ type: 'BIZ', code: 400, msg: '农产品不存在' })
+    PRODUCTS.splice(index, 1)
+    return delay(true)
+  }
+
+  // 农产品详情
+  if (method === 'GET' && url.indexOf('/product/') === 0) {
+    const id = Number(url.split('/').pop())
+    const product = PRODUCTS.filter((x) => x.id === id)[0]
+    return product ? delay(product) : Promise.reject({ type: 'BIZ', code: 400, msg: '农产品不存在' })
   }
 
   // 工单列表
@@ -243,6 +356,19 @@ function mockRequest(url, method, data) {
     const o = WORK_ORDERS.filter((x) => x.id === Number(d.id))[0]
     if (!o) return Promise.reject({ type: 'BIZ', code: 400, msg: '工单不存在' })
     return delay(o)
+  }
+
+  // 村干部处理工单
+  if (url === '/workorder/handle' && method === 'PUT') {
+    const o = WORK_ORDERS.filter((x) => x.id === Number(d.id))[0]
+    if (!o) return Promise.reject({ type: 'BIZ', code: 400, msg: '工单不存在' })
+    if (o.status === 2) return Promise.reject({ type: 'BIZ', code: 400, msg: '工单已完成，不能重复处理' })
+    o.status = 2
+    o.handleUserId = 2
+    o.handlerName = '李四'
+    o.result = d.result
+    o.updateTime = ts(0)
+    return delay(true)
   }
 
   // 工单流转记录
@@ -322,6 +448,7 @@ module.exports = {
   NOTICES,
   WORK_ORDERS,
   CONTACTS,
+  PRODUCTS,
   voiceSample,
   aiReply,
   mockRequest,

@@ -83,6 +83,18 @@ Page({
     })
   },
 
+  goProductManage() {
+    wx.navigateTo({ url: '/pages/product-manage/product-manage' })
+  },
+
+  goCadreDashboard() {
+    wx.navigateTo({ url: '/pages/cadre-dashboard/cadre-dashboard' })
+  },
+
+  goNoticeManage() {
+    wx.navigateTo({ url: '/pages/notice-manage/notice-manage' })
+  },
+
   logout() {
     wx.showModal({
       title: '退出登录',

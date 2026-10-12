@@ -1,0 +1,48 @@
+<view class="app-root {{themeClass}}">
+  <page-header
+    icon="🌾"
+    title="农产品管理"
+    subtitle="上架、修改和下架农产品"
+    theme="green" />
+
+  <view class="page-body">
+    <button class="btn btn-primary btn-block mb-4" bindtap="addProduct">＋ 上架农产品</button>
+
+    <block wx:if="{{loading}}">
+      <view class="skeleton-card" wx:for="{{[1,2,3]}}" wx:key="*this">
+        <view class="sk-line sk-line-60"></view>
+        <view class="sk-line sk-line-90"></view>
+        <view class="sk-line sk-line-40"></view>
+      </view>
+    </block>
+
+    <view class="empty" wx:elif="{{list.length === 0}}">
+      <view class="empty-icon">🌾</view>
+      <view class="empty-text">暂时还没有农产品</view>
+    </view>
+
+    <block wx:else>
+      <view wx:for="{{list}}" wx:key="id" class="card manage-card">
+        <view class="manage-main">
+          <image wx:if="{{item.imageSrc}}" class="manage-image" src="{{item.imageSrc}}" mode="aspectFill" />
+          <view wx:else class="manage-image manage-image-empty">🌾</view>
+
+          <view class="manage-info">
+            <view class="manage-name">{{item.name}}</view>
+            <view class="manage-price">￥{{item.price}}</view>
+            <view class="manage-stock">库存：{{item.stock}}</view>
+          </view>
+        </view>
+
+        <view class="manage-actions">
+          <button class="btn btn-secondary manage-btn" data-id="{{item.id}}" catchtap="editProduct">编辑</button>
+          <button
+            class="btn manage-btn manage-btn-danger"
+            data-id="{{item.id}}"
+            data-name="{{item.name}}"
+            catchtap="removeProduct">下架</button>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -65,6 +65,15 @@
         </view>
         <view class="entry-arrow">›</view>
       </view>
+
+      <view class="entry-card" bindtap="goProducts">
+        <view class="entry-icon entry-icon-green">🌾</view>
+        <view class="entry-main">
+          <view class="entry-title">看农产品</view>
+          <view class="entry-desc">看看村里的好东西</view>
+        </view>
+        <view class="entry-arrow">›</view>
+      </view>
     </view>
 
     <!-- 一键拨号 -->

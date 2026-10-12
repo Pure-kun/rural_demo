@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "村干部工作台",
+  "navigationBarBackgroundColor": "#CBE7D7",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

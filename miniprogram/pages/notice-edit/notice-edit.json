@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "公告信息",
+  "navigationBarBackgroundColor": "#FADDB6",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

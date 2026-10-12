@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "工单处理",
+  "navigationBarBackgroundColor": "#CDE0FA",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

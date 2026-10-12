@@ -41,6 +41,21 @@
     </view>
 
     <!-- 设置项 -->
+    <view class="card" wx:if="{{user.role === 1}}">
+      <view class="setting-row" bindtap="goCadreDashboard">
+        <text class="setting-label">🧑‍🌾 村干部工作台</text>
+        <text class="setting-value">进入 ›</text>
+      </view>
+      <view class="setting-row" bindtap="goProductManage">
+        <text class="setting-label">🌾 农产品管理</text>
+        <text class="setting-value">进入 ›</text>
+      </view>
+      <view class="setting-row" bindtap="goNoticeManage">
+        <text class="setting-label">📢 公告管理</text>
+        <text class="setting-value">进入 ›</text>
+      </view>
+    </view>
+
     <view class="card">
       <view class="setting-row" bindtap="onCall">
         <text class="setting-label">📞 打电话给村干部</text>

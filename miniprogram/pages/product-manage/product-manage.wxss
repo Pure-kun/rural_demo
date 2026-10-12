@@ -1,0 +1,67 @@
+.manage-card {
+  padding: var(--sp-3);
+}
+
+.manage-main {
+  display: flex;
+  align-items: center;
+}
+
+.manage-image {
+  width: 144rpx;
+  height: 144rpx;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  background: var(--c-primary-light);
+}
+
+.manage-image-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56rpx;
+}
+
+.manage-info {
+  flex: 1;
+  min-width: 0;
+  margin-left: var(--sp-3);
+}
+
+.manage-name {
+  color: var(--c-text);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+
+.manage-price {
+  margin-top: var(--sp-1);
+  color: var(--c-danger);
+  font-size: var(--fs-base);
+  font-weight: 600;
+}
+
+.manage-stock {
+  margin-top: var(--sp-1);
+  color: var(--c-text-weak);
+  font-size: var(--fs-sm);
+}
+
+.manage-actions {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 2rpx solid var(--c-border);
+}
+
+.manage-btn {
+  flex: 1;
+  margin: 0;
+}
+
+.manage-btn-danger {
+  background: var(--c-danger-light);
+  color: var(--c-danger);
+  border: 2rpx solid #F5C2BF;
+}

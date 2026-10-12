@@ -1,0 +1,74 @@
+.product-detail-card {
+  padding: var(--sp-4);
+}
+
+.product-detail-image {
+  width: 100%;
+  height: 420rpx;
+  border-radius: var(--r-lg);
+  background: var(--c-primary-light);
+}
+
+.product-detail-image-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 140rpx;
+}
+
+.product-detail-title {
+  margin-top: var(--sp-4);
+  color: var(--c-text);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+
+.product-detail-price {
+  margin-top: var(--sp-2);
+  color: var(--c-danger);
+  font-size: var(--fs-title);
+  font-weight: 700;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  min-height: var(--hit-min);
+  border-bottom: 2rpx solid var(--c-border);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row-column {
+  align-items: flex-start;
+  flex-direction: column;
+  padding: var(--sp-3) 0;
+}
+
+.detail-label {
+  width: 160rpx;
+  flex-shrink: 0;
+  color: var(--c-text-sub);
+  font-size: var(--fs-base);
+}
+
+.detail-value,
+.detail-content {
+  color: var(--c-text);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+}
+
+.detail-content {
+  width: 100%;
+  margin-top: var(--sp-2);
+  white-space: pre-wrap;
+}
+
+.detail-tip {
+  color: var(--c-text-sub);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}

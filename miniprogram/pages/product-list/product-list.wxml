@@ -1,0 +1,46 @@
+<view class="app-root {{themeClass}}">
+  <page-header
+    icon="🌾"
+    title="乡村农产品"
+    subtitle="看看村里的好东西"
+    theme="green" />
+
+  <view class="page-body">
+    <block wx:if="{{loading}}">
+      <view class="skeleton-card" wx:for="{{[1,2,3]}}" wx:key="*this">
+        <view class="sk-line sk-line-60"></view>
+        <view class="sk-line sk-line-90"></view>
+        <view class="sk-line sk-line-40"></view>
+      </view>
+    </block>
+
+    <view class="empty" wx:elif="{{list.length === 0}}">
+      <view class="empty-icon">🌾</view>
+      <view class="empty-text">暂时还没有农产品</view>
+    </view>
+
+    <block wx:else>
+      <view
+        wx:for="{{list}}"
+        wx:key="id"
+        class="card product-card"
+        data-id="{{item.id}}"
+        bindtap="goDetail">
+        <image
+          wx:if="{{item.imageSrc}}"
+          class="product-image"
+          src="{{item.imageSrc}}"
+          mode="aspectFill" />
+        <view wx:else class="product-image product-image-empty">🌾</view>
+        <view class="product-info">
+          <view class="row-between">
+            <text class="product-name">{{item.name}}</text>
+            <text class="product-price">￥{{item.price}}</text>
+          </view>
+          <view class="product-desc">{{item.description || '暂无介绍'}}</view>
+          <view class="product-stock">库存：{{item.stock === null || item.stock === undefined ? '暂无' : item.stock}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

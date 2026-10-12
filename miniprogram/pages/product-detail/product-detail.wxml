@@ -1,0 +1,44 @@
+<view class="app-root {{themeClass}}">
+  <view class="page-body">
+    <block wx:if="{{loading}}">
+      <view class="skeleton-card">
+        <view class="sk-line sk-line-90"></view>
+        <view class="sk-line sk-line-60"></view>
+        <view class="sk-line sk-line-40"></view>
+      </view>
+    </block>
+
+    <view class="empty" wx:elif="{{!product}}">
+      <view class="empty-icon">🌾</view>
+      <view class="empty-text">没有找到这个农产品</view>
+    </view>
+
+    <block wx:else>
+      <view class="card product-detail-card">
+        <image
+          wx:if="{{product.imageSrc}}"
+          class="product-detail-image"
+          src="{{product.imageSrc}}"
+          mode="aspectFill" />
+        <view wx:else class="product-detail-image product-detail-image-empty">🌾</view>
+
+        <view class="product-detail-title">{{product.name}}</view>
+        <view class="product-detail-price">￥{{product.price}}</view>
+        <view class="divider"></view>
+
+        <view class="detail-row">
+          <text class="detail-label">库存</text>
+          <text class="detail-value">{{product.stock === null || product.stock === undefined ? '暂无' : product.stock}}</text>
+        </view>
+        <view class="detail-row detail-row-column">
+          <text class="detail-label">产品介绍</text>
+          <text class="detail-content">{{product.description || '暂无介绍'}}</text>
+        </view>
+      </view>
+
+      <view class="card detail-tip">
+        <text>温馨提示：具体购买方式请联系村委会或产品提供人。</text>
+      </view>
+    </block>
+  </view>
+</view>

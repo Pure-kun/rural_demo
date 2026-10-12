@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "乡村农产品",
+  "navigationBarBackgroundColor": "#CBE7D7",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

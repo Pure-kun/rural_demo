@@ -1,0 +1,59 @@
+<view class="app-root {{themeClass}}">
+  <page-header
+    icon="🧑‍🌾"
+    title="{{userName}}，您好"
+    subtitle="村干部工作台"
+    theme="green" />
+
+  <view class="page-body">
+    <view class="section-title">今日工作概况</view>
+
+    <view class="dashboard-stats">
+      <view class="dashboard-stat dashboard-stat-pending">
+        <view class="dashboard-stat-num">{{stats.pending}}</view>
+        <view class="dashboard-stat-label">待处理工单</view>
+      </view>
+      <view class="dashboard-stat dashboard-stat-processing">
+        <view class="dashboard-stat-num">{{stats.processing}}</view>
+        <view class="dashboard-stat-label">处理中工单</view>
+      </view>
+      <view class="dashboard-stat dashboard-stat-done">
+        <view class="dashboard-stat-num">{{stats.done}}</view>
+        <view class="dashboard-stat-label">本月已完成</view>
+      </view>
+    </view>
+
+    <view class="section-title dashboard-section-title">常用工作</view>
+
+    <view class="entry-card" bindtap="goWorkorders">
+      <view class="entry-icon entry-icon-blue">📋</view>
+      <view class="entry-main">
+        <view class="entry-title">工单处理</view>
+        <view class="entry-desc">查看村民工单并更新处理进度</view>
+      </view>
+      <view class="entry-arrow">›</view>
+    </view>
+
+    <view class="entry-card" bindtap="goProducts">
+      <view class="entry-icon entry-icon-green">🌾</view>
+      <view class="entry-main">
+        <view class="entry-title">农产品管理</view>
+        <view class="entry-desc">上架、编辑和下架农产品</view>
+      </view>
+      <view class="entry-arrow">›</view>
+    </view>
+
+    <view class="entry-card" bindtap="goNotices">
+      <view class="entry-icon entry-icon-orange">📢</view>
+      <view class="entry-main">
+        <view class="entry-title">公告管理</view>
+        <view class="entry-desc">发布和维护村务公告</view>
+      </view>
+      <view class="entry-arrow">›</view>
+    </view>
+
+    <view class="card dashboard-tip">
+      <text>统计数据为演示数据，后续可接入真实统计接口。</text>
+    </view>
+  </view>
+</view>

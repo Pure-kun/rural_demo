@@ -1,0 +1,62 @@
+<view class="app-root {{themeClass}}">
+  <page-header
+    icon="🌾"
+    title="{{id ? '编辑农产品' : '上架农产品'}}"
+    subtitle="填写农产品信息"
+    theme="green" />
+
+  <view class="page-body">
+    <view class="card" wx:if="{{loading}}">
+      <view class="sk-line sk-line-60"></view>
+      <view class="sk-line sk-line-90"></view>
+      <view class="sk-line sk-line-40"></view>
+    </view>
+
+    <block wx:else>
+      <view class="card">
+        <view class="field">
+          <text class="field-label">农产品名称<text class="req">*</text></text>
+          <input class="input" value="{{name}}" placeholder="例如：生态大米" placeholder-class="input-placeholder" bindinput="onName" />
+        </view>
+
+        <view class="field">
+          <text class="field-label">价格（元）<text class="req">*</text></text>
+          <input class="input" type="digit" value="{{price}}" placeholder="例如：25.5" placeholder-class="input-placeholder" bindinput="onPrice" />
+        </view>
+
+        <view class="field">
+          <text class="field-label">库存数量<text class="req">*</text></text>
+          <input class="input" type="number" value="{{stock}}" placeholder="请输入库存数量" placeholder-class="input-placeholder" bindinput="onStock" />
+        </view>
+
+        <view class="field">
+          <text class="field-label">产品介绍</text>
+          <textarea class="textarea" value="{{description}}" placeholder="介绍一下产地、特点等" placeholder-class="input-placeholder" maxlength="500" bindinput="onDescription" />
+        </view>
+
+        <view class="field image-field">
+          <text class="field-label">产品图片</text>
+          <view class="image-row">
+            <view wx:if="{{imagePath}}" class="image-preview-wrap">
+              <image class="image-preview" src="{{imagePath}}" mode="aspectFill" />
+              <view class="image-remove" catchtap="removeImage">×</view>
+            </view>
+            <view wx:else class="image-add" bindtap="chooseImage">
+              <text class="image-add-icon">📷</text>
+              <text>选择图片</text>
+            </view>
+          </view>
+          <text class="image-tip">可从相册选择或拍照，图片会压缩后上传</text>
+        </view>
+      </view>
+
+      <view class="footer-holder"></view>
+    </block>
+  </view>
+
+  <view class="footer-bar" wx:if="{{!loading}}">
+    <button class="btn btn-primary btn-block" bindtap="save" disabled="{{saving || uploading}}">
+      {{uploading ? '图片上传中…' : saving ? '正在保存…' : id ? '保存修改' : '确认上架'}}
+    </button>
+  </view>
+</view>

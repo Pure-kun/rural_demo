@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "农产品信息",
+  "navigationBarBackgroundColor": "#CBE7D7",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "page-header": "/components/page-header/page-header"
+  }
+}

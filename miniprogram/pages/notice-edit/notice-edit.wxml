@@ -1,0 +1,36 @@
+<view class="app-root {{themeClass}}">
+  <page-header
+    icon="📢"
+    title="{{id ? '编辑公告' : '发布公告'}}"
+    subtitle="把村里的重要消息告诉大家"
+    theme="orange" />
+
+  <view class="page-body">
+    <view class="card" wx:if="{{loading}}">
+      <view class="sk-line sk-line-60"></view>
+      <view class="sk-line sk-line-90"></view>
+      <view class="sk-line sk-line-40"></view>
+    </view>
+
+    <block wx:else>
+      <view class="card">
+        <view class="field">
+          <text class="field-label">公告标题<text class="req">*</text></text>
+          <input class="input" value="{{title}}" maxlength="80" placeholder="例如：关于村道维修的通知" placeholder-class="input-placeholder" bindinput="onTitle" />
+        </view>
+        <view class="field notice-content-field">
+          <text class="field-label">公告内容<text class="req">*</text></text>
+          <textarea class="textarea" value="{{content}}" maxlength="2000" placeholder="请填写公告的具体内容" placeholder-class="input-placeholder" bindinput="onContent" />
+        </view>
+      </view>
+      <view class="footer-holder"></view>
+    </block>
+  </view>
+
+  <view class="footer-bar" wx:if="{{!loading}}">
+    <button class="btn btn-primary btn-block" bindtap="save" disabled="{{saving}}">
+      <view class="spinner" wx:if="{{saving}}"></view>
+      {{saving ? '正在保存…' : id ? '保存修改' : '发布公告'}}
+    </button>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+.req {
+  color: var(--c-danger);
+  margin-left: 4rpx;
+}
+
+.notice-content-field {
+  margin-bottom: 0;
+}

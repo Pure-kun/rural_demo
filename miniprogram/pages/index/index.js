@@ -102,6 +102,10 @@ Page({
     wx.navigateTo({ url: '/pages/ai-chat/ai-chat' })
   },
 
+  goProducts() {
+    wx.navigateTo({ url: '/pages/product-list/product-list' })
+  },
+
   goNoticeDetail(e) {
     const id = e.currentTarget.dataset.id
     wx.navigateTo({ url: '/pages/notice-detail/notice-detail?id=' + id })

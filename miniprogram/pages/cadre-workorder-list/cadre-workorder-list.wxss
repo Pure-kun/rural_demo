@@ -1,0 +1,6 @@
+.cadre-order-extra {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--sp-2);
+  font-size: var(--fs-xs);
+}

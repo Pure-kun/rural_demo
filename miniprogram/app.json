@@ -8,7 +8,16 @@
     "pages/notice-list/notice-list",
     "pages/notice-detail/notice-detail",
     "pages/ai-chat/ai-chat",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/product-list/product-list",
+    "pages/product-detail/product-detail",
+    "pages/product-manage/product-manage",
+    "pages/product-edit/product-edit",
+    "pages/cadre-dashboard/cadre-dashboard",
+    "pages/cadre-workorder-list/cadre-workorder-list",
+    "pages/cadre-workorder-detail/cadre-workorder-detail",
+    "pages/notice-manage/notice-manage",
+    "pages/notice-edit/notice-edit"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1F7A45",

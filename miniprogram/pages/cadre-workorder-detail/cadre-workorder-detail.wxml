@@ -1,0 +1,52 @@
+<view class="app-root {{themeClass}}">
+  <view class="page-body">
+    <block wx:if="{{order}}">
+      <view class="status-banner {{order.statusTag}}">
+        <view class="status-icon">{{order.statusIcon}}</view>
+        <view class="status-text">{{order.statusText}}</view>
+      </view>
+
+      <view class="card">
+        <view class="detail-title">{{order.title}}</view>
+        <view class="detail-tags">
+          <view class="tag tag-closed">{{order.categoryText}}</view>
+          <view wx:if="{{order.urgency > 1}}" class="tag tag-pending">{{order.urgencyText}}</view>
+        </view>
+        <view class="detail-content">{{order.content}}</view>
+        <view class="divider"></view>
+        <view class="kv"><text class="kv-k">提交人</text><text class="kv-v">{{order.submitterName || '村民'}}</text></view>
+        <view class="kv"><text class="kv-k">提交时间</text><text class="kv-v">{{order.createText}}</text></view>
+      </view>
+
+      <view class="card">
+        <text class="section-title">处理结果</text>
+        <textarea
+          class="textarea"
+          value="{{result}}"
+          placeholder="请填写处理情况，例如：已安排人员维修，预计今天完成"
+          placeholder-class="input-placeholder"
+          maxlength="500"
+          disabled="{{order.status === 2}}"
+          bindinput="onResult" />
+        <view wx:if="{{order.status === 2}}" class="fs-sm text-weak mt-2">该工单已经完成，不能重复处理。</view>
+      </view>
+
+      <view class="footer-holder" wx:if="{{order.status !== 2}}"></view>
+    </block>
+
+    <view class="page-body" wx:elif="{{loading}}">
+      <view class="skeleton-card">
+        <view class="sk-line sk-line-60"></view>
+        <view class="sk-line sk-line-90"></view>
+        <view class="sk-line sk-line-40"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-bar" wx:if="{{order && order.status !== 2}}">
+    <button class="btn btn-primary btn-block" bindtap="handle" disabled="{{saving}}">
+      <view class="spinner" wx:if="{{saving}}"></view>
+      {{saving ? '正在提交…' : '提交处理结果'}}
+    </button>
+  </view>
+</view>

@@ -1,0 +1,52 @@
+.dashboard-stats {
+  display: flex;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+
+.dashboard-stat {
+  flex: 1;
+  min-width: 0;
+  padding: var(--sp-3) var(--sp-2);
+  border-radius: var(--r-md);
+  text-align: center;
+}
+
+.dashboard-stat-pending {
+  background: var(--c-danger-light);
+  color: var(--c-danger);
+}
+
+.dashboard-stat-processing {
+  background: var(--c-accent-light);
+  color: #B46100;
+}
+
+.dashboard-stat-done {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+}
+
+.dashboard-stat-num {
+  font-size: var(--fs-title);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.dashboard-stat-label {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.dashboard-section-title {
+  margin-top: var(--sp-2);
+}
+
+.dashboard-tip {
+  margin-top: var(--sp-4);
+  color: var(--c-text-sub);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
